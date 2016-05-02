@@ -1,0 +1,6 @@
+# 5/2/2016
+Added emails.txt. Motive was that when sending a mass email users who where recieving the email could see all other emails who had recieved the same email. This way using a loop, each user will receive a unique email.
+This is in order to setup for the idea of having each user receive personalized info.
+Removed the while loop of the SMTP since it's now being run as a crontab and turned it into a function.
+Added this changelog.
+
