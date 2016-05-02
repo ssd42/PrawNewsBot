@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import smtplib
-import GetNews
+from PrawNewsBot.NewsBot import GetNews
 from email.mime.text import MIMEText
 '''
 This program uses the web crawling capabilities that praw allows to use

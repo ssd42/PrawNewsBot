@@ -3,4 +3,5 @@ Added emails.txt. Motive was that when sending a mass email users who where reci
 This is in order to setup for the idea of having each user receive personalized info.
 Removed the while loop of the SMTP since it's now being run as a crontab and turned it into a function.
 Added this changelog.
-
+Changed some import stuff in the init file. Not sure if it's the proper way to do it. But found it in a old python book, and pycharm doesnt detect and error.
+Seems like this method may be better since I may be using these file in different folders.
