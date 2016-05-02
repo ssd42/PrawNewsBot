@@ -5,7 +5,8 @@ import obot
 # connected with a respective account
 r = obot.login()
 
-#use of multireddits might still be a better choice for news.
+# use of multireddits might still be a better choice for news.
+# however if aiming at just one subreddit i should just use one
 
 
 class GetNews:
@@ -36,4 +37,8 @@ class GetNews:
            In order to function however mail_formatting will have to be changed in that it should take and imput
            or Fetcher could be the base class and everytime someone requests their specific subreddits a new class
            can be created using most vals of Fetcher'''
+        pass
+    def format_total(self, str_list):
+        '''Here it will agregate the complete email in some sort of newspaper format. The ultimate goal is
+        to find a way for the user to personalize their experience'''
         pass
