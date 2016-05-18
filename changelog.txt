@@ -1,7 +1,20 @@
-# 5/2/2016
-Added emails.txt. Motive was that when sending a mass email users who where recieving the email could see all other emails who had recieved the same email. This way using a loop, each user will receive a unique email.
+# 05/02/2016
+Added emails.txt. Motive was that when sending a mass email users who where receiving the email could see all other emails who had received the same email. This way using a loop, each user will receive a unique email.
 This is in order to setup for the idea of having each user receive personalized info.
 Removed the while loop of the SMTP since it's now being run as a crontab and turned it into a function.
 Added this changelog.
 Changed some import stuff in the init file. Not sure if it's the proper way to do it. But found it in a old python book, and pycharm doesnt detect and error.
-Seems like this method may be better since I may be using these file in different folders.
+Seems like this method may be better since it imports most into __all__ . I may be using these file in different folders.
+# 05/04/2016
+Made some changes in GetNews.py it will take multiple subreddits and layer them according to how
+a newspaper is displayed. Work in progress.
+Began incorporating default values in functions.
+# 05/11/2016
+Added functions for the multiple subreddits.
+Used OrderedDict's to keep the order of the wanted subreddits
+# 05/17/2016
+Began rewriting GetNews.py  The dictionary method to store
+the pages was flawed since it took to much changing dictionaries.
+Now keeps order in list and checks respective data on the dict
+Added a function (future) to load the data from the database
+in order to work with receiving data by email.

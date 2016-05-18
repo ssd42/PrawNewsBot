@@ -1,44 +1,53 @@
 import obot
-# initializes obot a class containing my reddit information.
-# It is no necessary to use this program as you can crawl through
-# reddit using praw mostly without an issue, I just prefer to have my bot
-# connected with a respective account
-r = obot.login()
 
-# use of multireddits might still be a better choice for news.
-# however if aiming at just one subreddit i should just use one
+r = obot.login()
 
 
 class GetNews:
     def __init__(self):
-        self.subreddits = 'news+worldnews'
-        self.total_stors = 5
+        # Data will be imported by from the db in future
+        self.name_dic = {'news': 3, 'aww': 2, 'comics': 1}
+        self.names = ['news', 'aww', 'comics']
+        self.quantity = [3, 2, 1]
+        self.the_message = ''
 
-    def get_top_stories(self):
-        # Generator must be within the function as this way it keeps generating new after each request
-        gen_stor = r.get_subreddit(self.subreddits).get_top_from_day(limit=self.total_stors)
+    # Function that grabs the data from reddit
+    def get_top_stories(self, the_sub, amount=1):
+        gen_stor = r.get_subreddit(the_sub).get_top_from_day(limit=amount)
+        news_dictionary = {a_thread.title: a_thread.short_link for a_thread in gen_stor}
+        return news_dictionary
 
-        the_dic = {athread.title: athread.short_link for athread in gen_stor}
-        # creates a dictionary with the title and url
+    # Formats the text simply to fit in the email.
+    def mail_formatting(self, the_dict, sub_name):
+        self.the_message += '\n' + sub_name.upper() + 2*'\n'
+        # Just to add a title to each bunch of text
+        for page in the_dict:
+            self.the_message += page + '\t' + the_dict[page] + '\n'
 
-        return the_dic
+    # Inputs might now be needed since can be grabbed from init
+    def run_multiple_subreddits(self):
+        for name in self.names:
+            generated_dict_news = self.get_top_stories(name, self.name_dic[name])
+            self.mail_formatting(generated_dict_news, name)
 
-    def mail_formating(self):
-        # Generates message that will be the email as a string
-        a_dic = self.get_top_stories()
-        msg = ''
-        for keys in a_dic:
-            msg += keys + '\t' + a_dic[keys] + '\n' + '\n'
-        return str(msg)
-    # In case of future implementation of a system that grabs multiple subreddits
-    def run_multiple_subreddits(self, subreds):
-        '''The code here will run mail formatting for each of the subreddits imputed
-           it will then agregate all the strings into a single one that will consist of the email.
-           In order to function however mail_formatting will have to be changed in that it should take and imput
-           or Fetcher could be the base class and everytime someone requests their specific subreddits a new class
-           can be created using most vals of Fetcher'''
-        pass
-    def format_total(self, str_list):
-        '''Here it will agregate the complete email in some sort of newspaper format. The ultimate goal is
-        to find a way for the user to personalize their experience'''
-        pass
+        return self.the_message
+
+    # Function will be used to read from a db.
+    # That way there will be no need to alter the
+    # original file every time for a different person
+    def get_from_database(self, db_name):
+        with open(db_name, 'r') as database:
+            for line in database:
+                try:
+                    name, amount = line.split('-')
+                    self.name_dic[name] = amount
+                    self.names.append(name)
+                except ValueError:
+                    print('Line could not be splitted ', line)
+
+    # Just to make the sendNews cleaner and easier to read
+    def get_mail_text(self):
+        return self.run_multiple_subreddits()
+
+tester = GetNews()
+print(tester.get_mail_text())
