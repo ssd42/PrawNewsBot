@@ -6,8 +6,8 @@ r = obot.login()
 class GetNews:
     def __init__(self):
         # Data will be imported by from the db in future
-        self.name_dic = {'news': 3, 'aww': 2, 'comics': 1}
-        self.names = ['news', 'aww', 'comics']
+        self.name_dic = {'news+worldnews': 5, 'askreddit': 2, 'jokes': 1, 'comics': 1}
+        self.names = ['news+worldnews', 'askreddit', 'jokes', 'comics']
         self.quantity = [3, 2, 1]
         self.the_message = ''
 
@@ -48,6 +48,3 @@ class GetNews:
     # Just to make the sendNews cleaner and easier to read
     def get_mail_text(self):
         return self.run_multiple_subreddits()
-
-tester = GetNews()
-print(tester.get_mail_text())

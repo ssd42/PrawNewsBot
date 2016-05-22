@@ -18,7 +18,7 @@ with open('emails.txt') as emails:
 # Takes the emails and passwords necessary to send
 # Values can be changed at any time
 sender = 'mypybots@gmail.com'
-password = ''
+password = 'sky4ishell32'
 receivers = email_list
 username = 'mypybots'
 subject = 'Daily dose of news'
@@ -31,7 +31,7 @@ timeframe = 12
 # Initializes the Fetcher Class that uses Praw to grab the articles
 theNews = GetNews.GetNews()
 # Grabs a string containing the news and its respective link
-msg = theNews.mail_formating()
+msg = theNews.get_mail_text()
 
 def sendMail(email):
     text = MIMEText(msg.encode('utf-8'), 'plain', 'utf-8')
