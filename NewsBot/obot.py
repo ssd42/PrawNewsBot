@@ -11,7 +11,7 @@ app_account_code = 'Xe32y13roppezbipKENyi9e_o6U'
 
 app_refresh = '42769845-t-4lAOEzKIsKmaKvBuyQfYvaipA'
 
-
+# login into my reddit credentials for me
 def login():
     r = praw.Reddit(user_agent = app_ua)
     r.set_oauth_app_info(app_id, app_secret, app_uri)
