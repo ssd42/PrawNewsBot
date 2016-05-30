@@ -18,7 +18,7 @@ with open('emails.txt') as emails:
 # Takes the emails and passwords necessary to send
 # Values can be changed at any time
 sender = 'mypybots@gmail.com'
-password = 'sky4ishell32'
+password = ''
 receivers = email_list
 username = 'mypybots'
 subject = 'Daily dose of news'
