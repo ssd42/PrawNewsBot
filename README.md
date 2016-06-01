@@ -6,7 +6,8 @@ Method chosen due to reddits upvote system. As people seem to normally vote the 
 from each day and those that (usually are more relevant)
 
 This was written using Python 3.4 and Praw 3.4 (later versions of praw now require a different method of Oauth so careful with that)
-In order to work properly make sure that you are logged into the email account you will be sending from the emails from
-if the error persists, switch the email used here to the default email on your default browser.
+In order to work properly make sure that you are logged into the email account you will be sending from the emails from.
+
+If the error persists, switch the email you wish to use to the default email on your default browser.
 
 Used and SMTP server as gmail already has one set up for use.
