@@ -1,13 +1,17 @@
 #!/usr/bin/python
 import smtplib
-from PrawNewsBot.NewsBot import GetNews
+import GetNews
 from email.mime.text import MIMEText
+import time, logging
+
 '''
 This program uses the web crawling capabilities that praw allows to use
 in order to retrieve five news article most relevant at the current time.
 I chosen this method as Reddit's up vote system seems to consistently
 choose relevant articles from reliable sources
 '''
+LOG_NAME = 'Error_Log.log'
+logging.basicConfig(filename=LOG_NAME, level=logging.DEBUG)
 # Saving emails in a text file is better so that this way the reciever
 # can't get the email of everyone involved
 email_list = []
@@ -33,12 +37,13 @@ theNews = GetNews.GetNews()
 # Grabs a string containing the news and its respective link
 msg = theNews.get_mail_text()
 
+
 def sendMail(email):
     text = MIMEText(msg.encode('utf-8'), 'plain', 'utf-8')
     # Converts from possible Unicode to avoid an encoding error
 
     text['From'] = sender
-    text['To'] = ','.join(receivers)
+    text['To'] = email # ','.join(receivers)
     text['Subject'] = subject
 
     try:
@@ -47,12 +52,15 @@ def sendMail(email):
         smtpObj.starttls()
         smtpObj.ehlo()
         smtpObj.login(username, password)
-        smtpObj.sendmail(sender, receivers, text.as_string())
+        smtpObj.sendmail(sender, email, text.as_string())
         smtpObj.quit()
         print("Successfully sent email")
     except Exception as e:
-        print(e)
-        print("Error: unable to send email")
+        print("Error: unable to send email: {}".format(e))
+        logging.debug(e)
 
 for address in receivers:
     sendMail(address)
+    ''' This code is mainly on the pi and is to be erased later on'''
+    with open('logger.txt', 'a') as logger:
+        logger.write('\n' + address + ' ' + str(time.ctime()) + '\n')
