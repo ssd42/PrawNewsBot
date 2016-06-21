@@ -18,3 +18,5 @@ the pages was flawed since it took to much changing dictionaries.
 Now keeps order in list and checks respective data on the dict
 Added a function (future) to load the data from the database
 in order to work with receiving data by email.
+# 06//21/2016
+Made major improvements on the python cron to be generalized into its own entity.
