@@ -12,8 +12,7 @@ choose relevant articles from reliable sources
 '''
 LOG_NAME = 'Error_Log.log'
 logging.basicConfig(filename=LOG_NAME, level=logging.DEBUG)
-# Saving emails in a text file is better so that this way the reciever
-# can't get the email of everyone involved
+# Code is here for future implementations.
 email_list = []
 with open('emails.txt') as emails:
     for email in emails:
@@ -26,7 +25,6 @@ password = ''
 receivers = email_list
 username = 'mypybots'
 subject = 'Daily dose of news'
-timeframe = 12
 
 # This is here for future purpose as this script will be on a
 # Timeframe that it runs so one can get daily news.

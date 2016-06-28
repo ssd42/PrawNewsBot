@@ -1,9 +1,12 @@
-import obot
+import praw
 
-r = obot.login()
+r = praw.Reddit(user_agent='Daily_News')
 
 
 class GetNews:
+
+
+    # Need to find a way to fix to imports from a db.
     def __init__(self):
         # Data will be imported by from the db in future
         self.name_dic = {'news+worldnews': 5, 'askreddit': 2, 'jokes': 2, 'comics': 1}
