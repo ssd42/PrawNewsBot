@@ -1,0 +1,19 @@
+no such table: users
+2016-08-09 17:58
+no such table: users
+2016-08-09 17:58
+no such table: users
+2016-08-09 17:58
+no such table: users
+2016-08-09 17:58
+no such table: users
+2016-08-09 18:01
+no such table: users
+2016-08-09 18:01
+database is locked
+2016-08-09 18:05
+database is locked
+2016-08-09 18:05
+database is locked
+2016-08-09 18:05
+User: steven was already in the databaseDATABASE ERROR: The user stevendias11@gmail.com was already in the database

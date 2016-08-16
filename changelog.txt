@@ -27,3 +27,9 @@ script going.
 # 06/27/2016
 Removed pycron and made it its own repo to be worked on later.
 Pycron is not fully functional and can be used to run both this script and others.
+# 07/04/2016
+Worked on the db and pycron implementation
+# 07/05/2016
+DB handler added
+# 07/13/2016
+Recovered some files that got deleted in a push
