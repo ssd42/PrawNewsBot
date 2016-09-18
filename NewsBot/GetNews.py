@@ -4,16 +4,20 @@ r = praw.Reddit(user_agent='Daily_News')
 
 
 class GetNews:
-
-
-    # Need to find a way to fix to imports from a db.
+    """
+    Initialiazation that will define what will be in the email, this would be a lot easier if done in 
+    a database but for now this will have to suffice
+    """
     def __init__(self):
         # Data will be imported by from the db in future
         self.name_dic = {'news+worldnews': 5, 'askreddit': 2, 'jokes': 2, 'comics': 1}
+
+        # List maintain order while ordered dicts are too clunky better to look up and just read
         self.names = ['news+worldnews', 'askreddit', 'jokes', 'comics']
         self.need_description = {'news+worldnews': False, 'askreddit': False, 'jokes': True, 'comics': False}
-        self.quantity = [3, 2, 1]
+        #self.quantity = [3, 2, 1]   # This line of code might do nothing anymore, test later
         self.the_message = ''
+
 
     # Function that grabs the data from reddit
     def get_top_stories(self, the_sub, amount=1):
@@ -28,12 +32,14 @@ class GetNews:
             news_dictionary = {a_thread.title: a_thread.short_link for a_thread in gen_stor}
             return news_dictionary
 
+
     # Formats the text simply to fit in the email.
     def mail_formatting(self, the_dict, sub_name):
         self.the_message += '\n' + sub_name.upper() + 2*'\n'
         # Just to add a title to each bunch of text
         for page in the_dict:
             self.the_message += page + '\t' + the_dict[page] + '\n'
+
 
     # Inputs might now be needed since can be grabbed from init
     def run_multiple_subreddits(self):
@@ -46,6 +52,8 @@ class GetNews:
     # Function will be used to read from a db.
     # That way there will be no need to alter the
     # original file every time for a different person
+
+    # At this time this isnt in use.
     def get_from_database(self, db_name):
         with open(db_name, 'r') as database:
             for line in database:

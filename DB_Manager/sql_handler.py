@@ -35,7 +35,7 @@ def add_to_db(user):
 def remove_to_db(user):
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
-    c.execute("DELETE FROM users WHERE name=?", (user,))
+    c.execute("DELETE FROM users WHERE name=?", (user,)) # Look if this prevents the sql inject
     conn.commit()
     conn.close()
 

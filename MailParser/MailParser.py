@@ -1,4 +1,5 @@
 from PrawNewsBot.DB_Manager.sql_handler import *
+import re
 # Stuff for time
 
 
@@ -12,9 +13,13 @@ def decode_line(lin):
     # Later on check if the subject is correct.
     subject_here = False
 
+
+    # This long if/else tree can be avoided with regex fix it
+
     if 'from' in line:
         print('getting user')
         for word in line.split():
+            #thia ia because of the <> in the email. Wonder if regex can fix
             if '@' in word:
                 user = word[1:-1]
     elif 'subject' in line:
