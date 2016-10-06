@@ -33,3 +33,5 @@ Worked on the db and pycron implementation
 DB handler added
 # 07/13/2016
 Recovered some files that got deleted in a push
+# 09/17/2016
+Messed around with some files for testing

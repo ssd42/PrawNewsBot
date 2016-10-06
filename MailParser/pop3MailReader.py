@@ -25,4 +25,5 @@ def main():
         '''
     Mailbox.quit()
 
-main()
+if __name__ == '__main__':
+    main()

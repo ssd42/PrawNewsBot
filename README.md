@@ -10,4 +10,4 @@ In order to work properly make sure that you are logged into the email account y
 
 If the error persists, switch the email you wish to use to the default email on your default browser.
 
-Used and SMTP server as gmail already has one set up for use.
+Email sending and recieving are done in SMTP and POP3 respectivly.

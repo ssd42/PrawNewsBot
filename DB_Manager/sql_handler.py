@@ -22,6 +22,8 @@ def add_to_db(user):
         conn = sqlite3.connect(db_name)
         c = conn.cursor()
         user = str(user)
+
+        # This convoluted thing that looks like crap is to prevent sqlinjections(even though im reading email)
         c.execute('INSERT INTO users (name, datetime) VALUES (?, ?)', (user,  current_time()))
 
         # c.execute("INSERT INTO users VALUES ?", args)
