@@ -2,7 +2,8 @@ import poplib, email, time
 from PrawNewsBot.MailParser import MailParser
 # import getpass
 # from email import parser
-
+# getpass in case this is to be turned into a small module for me
+# parser cause the method i have right now in sql_handler doesn't seem reliable
 
 def main():
     # the_message = ''
@@ -18,11 +19,6 @@ def main():
 
             MailParser.decode_line(str(raw_msg))
 
-            '''
-        raw_email = b"\n".join(Mailbox.retr(i+1)[1])
-        parsed_email = email.message_from_bytes(raw_email)
-        print(parsed_email)
-        '''
     Mailbox.quit()
 
 if __name__ == '__main__':

@@ -7,7 +7,7 @@ db_absolutePath = 'C:/Users/Steven/GitProjects/PrawNewsBot/DB_Manager/users.db'
 logger_dir = 'C:/Users/Steven/GitProjects/PrawNewsBot/MailParser/logger.txt'
 
 
-db_name = db_absolutePath
+db_name = db_absolutePath  # what why? Fix future
 
 
 # Code is here in case I wish to pass arguments into this code later on.
@@ -37,7 +37,7 @@ def add_to_db(user):
 def remove_to_db(user):
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
-    c.execute("DELETE FROM users WHERE name=?", (user,)) # Look if this prevents the sql inject
+    c.execute("DELETE FROM users WHERE name=?", (user,)) # Look if this prevents the sql injection by (sanitizing the input?)
     conn.commit()
     conn.close()
 
@@ -60,7 +60,7 @@ def current_time():
     return str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
 
 
-'''
+"""
 # code to interact with db'\s
 while True:
     raw = input('name: ')
@@ -79,7 +79,7 @@ while True:
     data = c.fetchall()
     print([i for i in data])
     c.close()
-'''
+"""
 
 
 '''
