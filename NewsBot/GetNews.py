@@ -29,7 +29,7 @@ class GetNews:
         # Otherwise send the shortlink
         else:
             gen_stor = r.get_subreddit(the_sub).get_top_from_day(limit=amount)
-            news_dictionary = {a_thread.title: a_thread.short_link for a_thread in gen_stor}
+            news_dictionary = {a_thread.title: a_thread.short_link + '\n' for a_thread in gen_stor}
             return news_dictionary
 
 

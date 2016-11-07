@@ -11,7 +11,6 @@ def decode_line(lin):
     line = str(lin).lower()
     print(line)
     # Later on check if the subject is correct.
-    subject_here = False
 
 
     # This long if/else tree can be avoided with regex fix it
@@ -24,8 +23,13 @@ def decode_line(lin):
                 user = word[1:-1]
     elif 'subject' in line:
         for word in line.split():
-            if 'redditnews' in word:
-                subject_here = True
+            if 'talk.admin' in word:
+                # Ok how do I raise the ocassion that they want to talk to me
+                # maybe just look at it directly and ask them to assign a Subject
+                # if so use sendmail to mail me irectly... may lead to spam
+                pass
+
+
     elif '$' in line:
         print('getting command')
         print(line)
