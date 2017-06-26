@@ -3,8 +3,8 @@ import datetime
 import sys
 
 db_name = 'users.db'
-db_absolutePath = 'C:/Users/Steven/GitProjects/PrawNewsBot/DB_Manager/users.db'
-logger_dir = 'C:/Users/Steven/GitProjects/PrawNewsBot/MailParser/logger.txt'
+db_absolutePath = ''
+logger_dir = ''
 
 
 db_name = db_absolutePath  # what why? Fix future
